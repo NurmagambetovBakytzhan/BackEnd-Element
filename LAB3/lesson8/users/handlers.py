@@ -1,0 +1,49 @@
+from typing import Optional
+
+from users.models import User
+from users.services import UserServices
+
+
+def add_money(user:User, money_amount: int, wallet_type):
+    UserServices.add_money(user, money_amount, wallet_type)
+
+
+class UserHandlers:
+
+    services: UserServices
+
+    def __init__(self, services: UserServices):
+        self.services = services
+
+    def sign_up(self, username: str, password: str) -> None:
+        username = username.strip().lower()
+        password = password.strip()
+
+        if not self._validate_username_and_password(username, password):
+            return None
+
+        self.services.create_user(username=username, password=password)
+
+    def sign_in(self, username: str, password: str) -> Optional[User]:
+        username = username.strip().lower()
+        password = password.strip()
+
+        if not self._validate_username_and_password(username, password):
+            return None
+
+        return self.services.get_user(username=username, password=password)
+
+    @staticmethod
+    def get_money_info(self, user: User):
+        UserServices.get_money_info(user)
+
+    def _validate_username_and_password(username: str, password: str) -> bool:
+        if username.startswith('z'):
+            print('username is invalid')
+            return False
+
+        if len(password) < 8:
+            print('password is too short')
+            return False
+
+        return True
