@@ -4,10 +4,6 @@ from users.models import User
 from users.services import UserServices
 
 
-def add_money(user:User, money_amount: int, wallet_type):
-    UserServices.add_money(user, money_amount, wallet_type)
-
-
 class UserHandlers:
 
     services: UserServices
@@ -34,9 +30,6 @@ class UserHandlers:
         return self.services.get_user(username=username, password=password)
 
     @staticmethod
-    def get_money_info(self, user: User):
-        UserServices.get_money_info(user)
-
     def _validate_username_and_password(username: str, password: str) -> bool:
         if username.startswith('z'):
             print('username is invalid')
