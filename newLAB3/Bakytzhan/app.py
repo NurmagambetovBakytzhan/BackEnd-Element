@@ -10,14 +10,13 @@ def str_to_enum(currency: str):
 
     if currency == "KZT":
         return Currency.KZT
-    elif currency == "USD":
+    elif currency == "RUB":
         return Currency.RUB
     else:
         return Currency.USD
 
-
-
 def init():
+
     user_repos = UserRepositories()
     user_services = UserServices()
     user_handlers = UserHandlers()

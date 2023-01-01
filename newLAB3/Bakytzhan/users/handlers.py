@@ -1,7 +1,6 @@
 from typing import Optional
 
-
-from models import User
+from users.models import *
 from services import UserServices
 
 
