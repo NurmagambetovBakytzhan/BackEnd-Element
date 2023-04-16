@@ -9,8 +9,8 @@ class CompanyModelSerializer(serializers.ModelSerializer):
 
 
 class VacancyModelSerializer(serializers.ModelSerializer):
-    company = CompanyModelSerializer()
 
     class Meta:
         model = models.Vacancy
         fields = '__all__'
+
